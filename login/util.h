@@ -1,0 +1,6 @@
+﻿#ifndef UTIL_H
+#define UTIL_H
+
+#endif // UTIL_H
+
+class Util{};
