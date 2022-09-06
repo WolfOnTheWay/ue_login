@@ -7,6 +7,7 @@
 #include <QNetworkAccessManager>
 #include <QtNetwork/QNetworkRequest>
 #include <QtNetwork/QNetworkReply>
+#include <QJsonObject>
 namespace Ui {
 class VerifyCode;
 }
@@ -37,8 +38,11 @@ private slots:
     void on_lineEdit_6_textEdited(const QString &arg1);
 
     void sendMessageFinished(QNetworkReply* reply);
+    void loginFinished(QNetworkReply* reply);
 
 
+
+    void on_pushButton_3_clicked();
 
 private:
     Ui::VerifyCode *ui;
