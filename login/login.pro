@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -26,10 +26,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         login.cpp \
+    util.cpp \
     verifycode.cpp
 
 HEADERS += \
         login.h \
+    util.h \
     verifycode.h
 
 FORMS += \

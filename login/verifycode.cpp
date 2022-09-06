@@ -1,6 +1,7 @@
-#include "verifycode.h"
+﻿#include "verifycode.h"
 #include "ui_verifycode.h"
 #include <QDebug>
+
 
 #define VERIFY_TIME 6
 
@@ -47,20 +48,30 @@ void VerifyCode::slot_time_true()
     }
 }
 
-void VerifyCode::showVerifyError()
-{
-    //提醒验证码错误，校验错误时调用，更改界面文字
-    ui->label_send->hide();
-    ui->label_error->show();
-}
+
 
 void VerifyCode::on_pushButton_clicked()
 {
-    //获取验证码按钮
 
-    //if ("获取验证码" == ui->pushButton->text())
-    {
-        //60s定时器-定时结束按钮文字"重新获取验证码"
+    //发送验证码请求
+    QNetworkRequest request;
+    QNetworkAccessManager* naManager = new QNetworkAccessManager();
+    QMetaObject::Connection connRet = QObject::connect(naManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(sendMessageFinished(QNetworkReply*)));
+    Q_ASSERT(connRet);
+    request.setUrl(QUrl("http://227.0.3.1:8090/d0SayHello"));
+    QNetworkReply* reply = naManager->get(request);
+ }
+
+//验证码发送完成
+void VerifyCode::sendMessageFinished(QNetworkReply* reply){
+    //对返回数据进行判断
+    QVariant statusCode = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute);
+    //逻辑
+    if(!statusCode.isValid()){
+        ui->label_error->setText("发送验证码失败，请检查网络连接！");
+        ui->label_error->show();
+    }else{
+        ui->label_send->show();
         ui->label_send->setText(QString("请输入发送至%1的6位验证码，有效期10分钟。\
                                         如未收到，请尝试重新获取验证码。").arg(phone_number));
         ui->label_send->show();
@@ -70,9 +81,7 @@ void VerifyCode::on_pushButton_clicked()
 
         //启动定时器
         QTimer::singleShot(1000, this, SLOT(slot_time_true()));
-
     }
-
 }
 
 void VerifyCode::on_lineEdit_6_textEdited(const QString &arg1)
@@ -84,42 +93,37 @@ void VerifyCode::on_lineEdit_6_textEdited(const QString &arg1)
     //demo
     if ("123456" != verify_code)
     {
-        this->showVerifyError();
+        qDebug()<<"后续验证接口！";
     }
 }
 
 void VerifyCode::on_lineEdit_1_textChanged(const QString &arg1)
 {
     verify_code += arg1;
-    qDebug()<<verify_code;
     ui->lineEdit_2->setFocus();
 }
 
 void VerifyCode::on_lineEdit_2_textEdited(const QString &arg1)
 {
     verify_code += arg1;
-    qDebug()<<verify_code;
     ui->lineEdit_3->setFocus();
 }
 
 void VerifyCode::on_lineEdit_3_textEdited(const QString &arg1)
 {
     verify_code += arg1;
-    qDebug()<<verify_code;
     ui->lineEdit_4->setFocus();
 }
 
 void VerifyCode::on_lineEdit_4_textEdited(const QString &arg1)
 {
     verify_code += arg1;
-    qDebug()<<verify_code;
     ui->lineEdit_5->setFocus();
 }
 
 void VerifyCode::on_lineEdit_5_textEdited(const QString &arg1)
 {
     verify_code += arg1;
-    qDebug()<<verify_code;
     ui->lineEdit_6->setFocus();
 }
 

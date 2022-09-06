@@ -1,9 +1,12 @@
-#ifndef VERIFYCODE_H
+﻿#ifndef VERIFYCODE_H
 #define VERIFYCODE_H
 
 #include <QWidget>
 #include <QTimer>
-
+#include <QtCore/QJsonDocument>
+#include <QNetworkAccessManager>
+#include <QtNetwork/QNetworkRequest>
+#include <QtNetwork/QNetworkReply>
 namespace Ui {
 class VerifyCode;
 }
@@ -15,7 +18,7 @@ class VerifyCode : public QWidget
 public:
     explicit VerifyCode(QString m_phone_number, QWidget *parent = 0);
     ~VerifyCode();
-    void showVerifyError();
+
 
 private slots:
     void on_pushButton_clicked();
@@ -32,6 +35,10 @@ private slots:
     void on_lineEdit_5_textEdited(const QString &arg1);
 
     void on_lineEdit_6_textEdited(const QString &arg1);
+
+    void sendMessageFinished(QNetworkReply* reply);
+
+
 
 private:
     Ui::VerifyCode *ui;

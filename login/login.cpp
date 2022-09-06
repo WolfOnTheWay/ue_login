@@ -1,7 +1,8 @@
-#include "login.h"
+﻿#include "login.h"
 #include "ui_login.h"
 #include <QImage>
 #include <verifycode.h>
+#include "util.h"
 
 login::login(QWidget *parent) :
     QWidget(parent),
@@ -28,11 +29,19 @@ login::~login()
     delete ui;
 }
 
+
+//点击下一步
 void login::on_pushButton_clicked()
 {
-    //点击下一步
-    VerifyCode *vc = new VerifyCode(ui->lineEdit->text());
-    this->hide();
-    vc->show();
-
+    //进行手机号验证
+    QString phone = ui->lineEdit->text();
+    if(!Util::isLegalPhone(phone)){
+        ui->lineEdit->text()="";
+        ui->label_check->setText("手机号错误，请重新填写");
+        ui->label_check->show();
+    }else {
+        VerifyCode *vc = new VerifyCode(ui->lineEdit->text());
+        this->hide();
+        vc->show();
+    }
 }
