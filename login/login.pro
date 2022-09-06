@@ -24,12 +24,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
+    config.cpp \
         main.cpp \
         login.cpp \
     util.cpp \
     verifycode.cpp
 
 HEADERS += \
+    config.h \
         login.h \
     util.h \
     verifycode.h

@@ -1,7 +1,6 @@
 ﻿#ifndef UTIL_H
 #define UTIL_H
 
-#endif // UTIL_H
 #include<QObject>
 #include<QString>
 #include<QRegExpValidator>
@@ -11,3 +10,6 @@ class Util:public QObject{
 public:
     static bool isLegalPhone(const  QString &phoneNum);
 };
+
+#endif // UTIL_H
+

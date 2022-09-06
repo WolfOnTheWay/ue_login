@@ -1,9 +1,10 @@
 ﻿#include "verifycode.h"
 #include "ui_verifycode.h"
+#include "config.h"
 #include <QDebug>
 
 
-#define VERIFY_TIME 6
+#define VERIFY_TIME 60
 
 VerifyCode::VerifyCode(QString m_phone_number, QWidget *parent) :
     QWidget(parent),
@@ -53,12 +54,23 @@ void VerifyCode::slot_time_true()
 void VerifyCode::on_pushButton_clicked()
 {
 
+    //获取短信获取接口
+    QString qstrFileName=(QApplication::applicationDirPath()+"/config.cnf");
+    ConfigFile cfg;
+    if(!cfg.fileName(qstrFileName))
+    {
+        qDebug()<<"配置文件不存在,%1"<<qstrFileName;
+        return;
+    }
+
+    QString url = cfg.Get("config","getMessageApi").toString();
+
     //发送验证码请求
     QNetworkRequest request;
     QNetworkAccessManager* naManager = new QNetworkAccessManager();
     QMetaObject::Connection connRet = QObject::connect(naManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(sendMessageFinished(QNetworkReply*)));
     Q_ASSERT(connRet);
-    request.setUrl(QUrl("http://227.0.3.1:8090/d0SayHello"));
+    request.setUrl(QUrl(url));
     QNetworkReply* reply = naManager->get(request);
  }
 
@@ -71,6 +83,7 @@ void VerifyCode::sendMessageFinished(QNetworkReply* reply){
         ui->label_error->setText("发送验证码失败，请检查网络连接！");
         ui->label_error->show();
     }else{
+        qDebug()<<reply->readAll();
         ui->label_send->show();
         ui->label_send->setText(QString("请输入发送至%1的6位验证码，有效期10分钟。\
                                         如未收到，请尝试重新获取验证码。").arg(phone_number));
