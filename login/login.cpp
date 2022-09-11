@@ -22,6 +22,10 @@ login::login(QWidget *parent) :
     ui->flag->setPixmap(fitpixmap);
 
     ui->label_check->hide();    //手机号错误提醒，默认隐藏
+
+    QAction * pActLeft = new QAction(this);
+    pActLeft->setIcon(QIcon(":/img/phone.png"));
+    ui->lineEdit->addAction(pActLeft,QLineEdit::LeadingPosition);
 }
 
 login::~login()

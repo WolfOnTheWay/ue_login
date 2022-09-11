@@ -13,10 +13,13 @@
   <property name="windowTitle">
    <string>login</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(17, 23, 41);</string>
+  </property>
   <widget class="QLabel" name="flag">
    <property name="geometry">
     <rect>
-     <x>210</x>
+     <x>200</x>
      <y>0</y>
      <width>100</width>
      <height>100</height>
@@ -42,7 +45,10 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true"/>
+    <string notr="true">color: rgb(255, 255, 255);
+font-size: 30px;
+text-align: left;
+font-family: SourceHanSansSC-regular;</string>
    </property>
    <property name="text">
     <string>手机号登录/注册</string>
@@ -57,6 +63,19 @@
      <height>60</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">border-radius: 15px;
+color: rgb(255, 255, 255);
+background-color: rgb(32, 41, 58);
+
+
+font-size: 24px;
+text-align: left;
+font-family: SourceHanSansSC-regular;</string>
+   </property>
+   <property name="maxLength">
+    <number>11</number>
+   </property>
   </widget>
   <widget class="QLabel" name="label_3">
    <property name="geometry">
@@ -69,8 +88,15 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>6</pointsize>
+     <family>SourceHanSansSC-regular</family>
+     <pointsize>-1</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(133, 135, 155);
+font-size: 16px;
+text-align: left;
+font-family: SourceHanSansSC-regular;</string>
    </property>
    <property name="text">
     <string>手机号为本平台唯一识别码，请使用本人手机号注册，本平台采用一账号一实名，请珍惜自己的账号，切勿违反平台规定，一旦永久封禁，将不可恢复。</string>
@@ -88,6 +114,12 @@
      <height>41</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(178, 180, 202);
+font-size: 20px;
+text-align: left;
+font-family: SourceHanSansSC-regular;</string>
+   </property>
    <property name="text">
     <string>自动登录</string>
    </property>
@@ -100,6 +132,12 @@
      <width>461</width>
      <height>61</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(93, 94, 255);
+border-radius: 15px;
+font-size: 28px;</string>
    </property>
    <property name="text">
     <string>下一步</string>
@@ -116,8 +154,15 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>6</pointsize>
+     <family>SourceHanSansSC-regular</family>
+     <pointsize>-1</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(133, 135, 155);
+font-size: 18px;
+text-align: left;
+font-family: SourceHanSansSC-regular;</string>
    </property>
    <property name="text">
     <string>点击下一步代表你已阅读并同意服务协议和隐私政策</string>
@@ -132,43 +177,23 @@
   <widget class="QLabel" name="label_5">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>640</y>
-     <width>451</width>
+     <x>170</x>
+     <y>610</y>
+     <width>151</width>
      <height>20</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(197, 200, 229);
+font-size: 20px;
+text-align: left;
+font-family: SourceHanSansSC-regular;</string>
    </property>
    <property name="text">
     <string>第三方账号登录</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="Line" name="line">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>640</y>
-     <width>171</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Horizontal</enum>
-   </property>
-  </widget>
-  <widget class="Line" name="line_2">
-   <property name="geometry">
-    <rect>
-     <x>310</x>
-     <y>640</y>
-     <width>161</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Horizontal</enum>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_2">
@@ -180,8 +205,26 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(32, 41, 58);
+border-radius: 15px;
+font-size: 14px;
+text-align: center;
+font-family: Roboto;</string>
+   </property>
    <property name="text">
     <string>微信</string>
+   </property>
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/img/wx.png</normaloff>:/img/wx.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>30</width>
+     <height>30</height>
+    </size>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_3">
@@ -193,8 +236,26 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(32, 41, 58);
+border-radius: 15px;
+font-size: 14px;
+text-align: center;
+font-family: Roboto;</string>
+   </property>
    <property name="text">
     <string>抖音</string>
+   </property>
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/img/dy.png</normaloff>:/img/dy.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>30</width>
+     <height>30</height>
+    </size>
    </property>
   </widget>
   <widget class="QLabel" name="label_check">
@@ -213,6 +274,23 @@
    </property>
    <property name="text">
     <string>手机号错误</string>
+   </property>
+  </widget>
+  <widget class="Line" name="line">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>610</y>
+     <width>151</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);
+</string>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
    </property>
   </widget>
  </widget>

@@ -1,5 +1,8 @@
 <RCC>
     <qresource prefix="/">
         <file>img/flag.png</file>
+        <file>img/dy.png</file>
+        <file>img/phone.png</file>
+        <file>img/wx.png</file>
     </qresource>
 </RCC>
